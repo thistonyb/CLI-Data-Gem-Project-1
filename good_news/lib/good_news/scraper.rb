@@ -5,12 +5,19 @@ require 'open-uri'
 require 'pry'
 
 class Scraper
+    # A constant to store the homepage.
     HOMEPAGEURL = "https://www.goodnewsnetwork.org/category/news/"
 
+    #Uses open-uri and nokogiri to grab and parse the HTML.
+    #Returns the parsed page in a array which sets it up for a search using CSS selectors.
     def self.get_page(url)
         return Nokogiri::HTML(open(url))
     end
-
+    #Uses Class method #get_page and saves to doc. 
+    #Uses a css selector to loop through a section of the document that contains topic info.
+    #Instantiates a Topic object and stores the topic name in the Topic object's name attribute and 
+    #stores the topic web address in the Topic object's web_addr attribute.
+    #Saves each Topic object in the Topic Class variable @@all using the #save method.
     def self.get_topics
         doc = self.get_page(HOMEPAGEURL)
         doc.css("ul.td-category a").each do |topic|
