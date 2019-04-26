@@ -1,3 +1,6 @@
+require_relative "./scraper.rb"
+require_relative "./article.rb"
+
 class Topic
     attr_accessor :name, :articles
     @@all = []
