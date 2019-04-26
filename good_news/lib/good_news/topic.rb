@@ -13,5 +13,9 @@ class Topic
         @@all
     end
 
+    def save
+        @@all << self
+    end
+
 
 end

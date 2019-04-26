@@ -13,13 +13,12 @@ class Scraper
 
     def self.get_topics
         doc = self.get_page(HOMEPAGEURL)
-        doc.css("ul.td-category").each do |topic|
-            topic = Topic.new
-            
-
+        doc.css("ul.td-category a").each do |topic|
+            new_topic = Topic.new
+            new_topic.name = topic.text
+            new_topic.web_addr = topic.attribute("href").value
+            new_topic.save
         end
-
-
     end
 
 end
