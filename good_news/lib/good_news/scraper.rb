@@ -5,13 +5,20 @@ require 'open-uri'
 require 'pry'
 
 class Scraper
+    HOMEPAGEURL = "https://www.goodnewsnetwork.org/category/news/"
 
-    def get_page
-        doc = Nokogiri::HTML(open("https://www.goodnewsnetwork.org/category/news/"))
-        binding.pry
+    def self.get_page(url)
+        return Nokogiri::HTML(open(url))
     end
 
-    def get_topics
+    def self.get_topics
+        doc = self.get_page(HOMEPAGEURL)
+        doc.css("ul.td-category").each do |topic|
+            topic = Topic.new
+            
+
+        end
+
 
     end
 
