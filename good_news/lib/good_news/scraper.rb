@@ -28,5 +28,14 @@ class Scraper
         end
     end
 
+    def self.get_articles
+        Topic.all.each do |topic|
+            doc = self.get_page(topic.web_addr)
+            doc.css().each do |info|
+                
+            end
+        end
+    end
+
 end
 
