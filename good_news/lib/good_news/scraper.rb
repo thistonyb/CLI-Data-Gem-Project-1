@@ -31,7 +31,7 @@ class Scraper
     def self.get_articles
         Topic.all.each do |topic|
             doc = self.get_page(topic.web_addr)
-            doc.css("h3.entry-title td-module-title a").each do |info| 
+            doc.css("h3.entry-title a").each do |info| 
                 new_article = Article.new
                 new_article.web_addr = info.attribute("href").value
                 new_article.title = info.text
