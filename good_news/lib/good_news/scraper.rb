@@ -13,10 +13,9 @@ class Scraper
     def self.get_page(url)
         return Nokogiri::HTML(open(url))
     end
-    #Uses Class method #get_page and saves to doc. 
-    #Uses a css selector to loop through a section of the document that contains topic info.
-    #Instantiates a Topic object and stores the topic name in the Topic object's name attribute and 
-    #stores the topic web address in the Topic object's web_addr attribute.
+
+    #This method grabs Topics and stores them. Uses Class method #get_page and saves to doc. 
+    #Instantiates a Topic object and stores the topic name and web address in the Topic object.
     #Saves each Topic object in the Topic Class variable @@all using the #save method.
     def self.get_topics
         doc = self.get_page(HOMEPAGEURL)
@@ -27,7 +26,11 @@ class Scraper
             new_topic.save
         end
     end
-
+    
+    #This method is used to get and store each topic's articles.
+    #Calls Topic's @@all Class variable array to loop through Topic objects.
+    #Instantiates new Article object. Saves article's web address and title to Article object.
+    #Pushes Article object into the Topic object's articles attribute(an array).
     def self.get_articles
         Topic.all.each do |topic|
             doc = self.get_page(topic.web_addr)
