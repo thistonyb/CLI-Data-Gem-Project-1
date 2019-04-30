@@ -3,6 +3,7 @@ require_relative "./topic.rb"
 require_relative "./article.rb"
 require 'nokogiri'
 require 'open-uri'
+require 'launchy'
 require 'pry'
 
 Class Cli
@@ -49,10 +50,32 @@ Class Cli
     end
 
     def display_articles(input)
+        counter = 1
+        Topic.all[input-1].articles.each do |article|
+            puts "#{counter}. #{article.name}"
+            counter +=1
+        end
+        while user_input != "exit"
+            puts "Please enter the number of the article to be taken to its page."
+            puts "Or type 'exit' to quit."
+            
+            user_input = gets.chomp
+
+            case user_input
+            when (1..Topic.all[input-1].articles.length).include?(user_input.to_i)
+                puts "Hold onto your seat, we are sending you to some Good News!"
+
+            when "exit"
+                puts "See you next time!"
+                exit
+            end
+        end
 
     end
 
-    
+    def exit
+
+    end
 
 
 
