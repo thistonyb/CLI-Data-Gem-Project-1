@@ -1,5 +1,6 @@
 require_relative "./topic.rb"
 require_relative "./article.rb"
+require_relative "./cli.rb"
 require 'nokogiri'
 require 'open-uri'
 require 'pry'

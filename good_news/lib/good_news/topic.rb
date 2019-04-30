@@ -1,5 +1,7 @@
 require_relative "./scraper.rb"
 require_relative "./article.rb"
+require_relative "./cli.rb"
+
 
 class Topic
     attr_accessor :name, :articles, :web_addr

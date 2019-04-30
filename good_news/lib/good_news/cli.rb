@@ -6,7 +6,7 @@ require 'open-uri'
 require 'launchy'
 require 'pry'
 
-Class Cli
+class Cli
     def call_user
         user_input = nil
         while user_input != "exit"
@@ -21,8 +21,7 @@ Class Cli
             when 'topics'
                 display_topics
             when 'exit'
-                puts "See you next time!"
-                exit
+                good_bye
             end
         end
     end
@@ -43,17 +42,16 @@ Class Cli
             when (1..Topic.all.length).include?(user_input.to_i)
                 display_articles(user_input)
             when "exit"
-                puts "See you next time!"
-                exit
+                good_bye
             end
         end
     end
 
     def display_articles(input)
         counter = 1
-        Topic.all[input-1].articles.each do |article|
+        Topic.all[input.to_i - 1].articles.each do |article|
             puts "#{counter}. #{article.name}"
-            counter +=1
+            counter += 1
         end
         while user_input != "exit"
             puts "Please enter the number of the article to be taken to its page."
@@ -64,17 +62,17 @@ Class Cli
             case user_input
             when (1..Topic.all[input-1].articles.length).include?(user_input.to_i)
                 puts "Hold onto your seat, we are sending you to some Good News!"
-
+                Launchy.open("Topic.all[input -1].articles[user_input.to_i - 1].web_addr")
             when "exit"
-                puts "See you next time!"
-                exit
+                good_bye 
             end
         end
-
+        binding.pry
     end
 
-    def exit
-
+    def good_bye
+        puts "See you next time!"
+        exit
     end
 
 

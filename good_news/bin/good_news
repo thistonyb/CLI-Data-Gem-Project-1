@@ -13,6 +13,7 @@ require "pry"
 require_relative "../lib/good_news/scraper.rb"
 require_relative "../lib/good_news/article.rb"
 require_relative "../lib/good_news/topic.rb"
+require_relative "../lib/good_news/cli.rb"
 
 
 require "irb"
