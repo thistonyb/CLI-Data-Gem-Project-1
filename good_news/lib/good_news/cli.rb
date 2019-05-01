@@ -7,7 +7,7 @@ require 'launchy'
 require 'pry'
 
 class Cli
-    def call_user
+    def self.call_user
         user_input = nil
         while user_input != "exit"
             puts "Welcome, it looks like you are looking for some Good News!"
@@ -19,14 +19,15 @@ class Cli
 
             case user_input
             when 'topics'
-                display_topics
+                self.display_topics
             when 'exit'
-                good_bye
+                self.good_bye
             end
         end
     end
 
-    def display_topics
+    def self.display_topics
+        user_input = nil
         counter = 1
         Topic.all.each do |topic|
             puts "#{counter}. #{topic.name}"
@@ -38,19 +39,20 @@ class Cli
             
             user_input = gets.chomp
 
-            case user_input
-            when (1..Topic.all.length).include?(user_input.to_i)
-                display_articles(user_input)
-            when "exit"
-                good_bye
+            if (1..Topic.all.length).include?(user_input.to_i)
+                self.display_articles(user_input)
+            elsif user_input == "exit"
+                self.good_bye
             end
         end
     end
 
-    def display_articles(input)
+    def self.display_articles(topic_input)
+        user_input = nil
+        topic_articles = Topic.all[topic_input.to_i - 1].articles
         counter = 1
-        Topic.all[input.to_i - 1].articles.each do |article|
-            puts "#{counter}. #{article.name}"
+        topic_articles.each do |article|
+            puts "#{counter}. #{article.title}"
             counter += 1
         end
         while user_input != "exit"
@@ -59,18 +61,17 @@ class Cli
             
             user_input = gets.chomp
 
-            case user_input
-            when (1..Topic.all[input-1].articles.length).include?(user_input.to_i)
+            if (1..topic_articles.length).include?(user_input.to_i)
                 puts "Hold onto your seat, we are sending you to some Good News!"
-                Launchy.open("Topic.all[input -1].articles[user_input.to_i - 1].web_addr")
-            when "exit"
-                good_bye 
+                Launchy.open(topic_articles[user_input.to_i - 1].web_addr)
+            elsif user_input == "exit"
+                self.good_bye 
             end
         end
         binding.pry
     end
 
-    def good_bye
+    def self.good_bye
         puts "See you next time!"
         exit
     end

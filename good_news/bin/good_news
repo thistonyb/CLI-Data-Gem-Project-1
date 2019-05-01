@@ -15,6 +15,10 @@ require_relative "../lib/good_news/article.rb"
 require_relative "../lib/good_news/topic.rb"
 require_relative "../lib/good_news/cli.rb"
 
+Scraper.get_topics
+Scraper.get_articles
+Cli.call_user
 
-require "irb"
-IRB.start(__FILE__)
+
+# require "irb"
+# IRB.start(__FILE__)
