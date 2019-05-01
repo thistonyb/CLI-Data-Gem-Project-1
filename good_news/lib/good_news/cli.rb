@@ -6,7 +6,12 @@ require 'open-uri'
 require 'launchy'
 require 'pry'
 
+#Command line interface class
 class Cli
+
+    #Class method to begin interaction with user.
+    #Gives a choice of topics or exit.
+    #Calls on #display_topics.
     def self.call_user
         user_input = nil
         while user_input != "exit"
@@ -26,6 +31,9 @@ class Cli
         end
     end
 
+    #Class method to loop through topic objects and display names.
+    #Offers user choice of picking a topic to display articles in that topic or exit. 
+    #Calls on #display_articles.
     def self.display_topics
         user_input = nil
         counter = 1
@@ -47,6 +55,9 @@ class Cli
         end
     end
 
+    #Class method that loops through a topic objects articles attribute, an array of article objects.
+    #Offers user a choice of article to pick or to exit.
+    #Launches article in browser.
     def self.display_articles(topic_input)
         user_input = nil
         topic_articles = Topic.all[topic_input.to_i - 1].articles
@@ -68,14 +79,11 @@ class Cli
                 self.good_bye 
             end
         end
-        binding.pry
     end
 
+    #Class method to abstract away the exit redundancy.
     def self.good_bye
         puts "See you next time!"
         exit
     end
-
-
-
 end
