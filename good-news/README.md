@@ -31,7 +31,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/tonyb/good-news-cli-gem.
+Bug reports and pull requests are welcome on GitHub at https://github.com/thistonyb/good-news-cli-gem.
 
 ## License
 
