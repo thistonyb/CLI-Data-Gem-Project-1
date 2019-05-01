@@ -1,9 +1,4 @@
-require_relative "./scraper.rb"
-require_relative "./article.rb"
-require_relative "./cli.rb"
-
-
-class Topic
+class  GoodNews::Topic
     attr_accessor :name, :articles, :web_addr
 
     #Class variable stores all topics objects.

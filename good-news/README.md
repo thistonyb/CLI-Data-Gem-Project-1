@@ -1,15 +1,12 @@
 # GoodNews
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/good_news`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This Ruby Gem provides a CLI to choose a good news topic and then choose from a list of articles in that topic from the Good News website. Once an article is chosen the gem will launch that article in a browser.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'good_news'
+gem 'good-news'
 ```
 
 And then execute:
@@ -18,11 +15,13 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install good_news
+    $ gem install good-news
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the below and follow the on screen prompts.
+
+    $ good-news
 
 ## Development
 

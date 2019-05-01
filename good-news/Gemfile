@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
-gem 'nokogiri'
-gem 'pry'
-gem 'launchy'
+# gem 'nokogiri'
+# gem 'pry'
+# gem 'launchy'
 # Specify your gem's dependencies in good_news.gemspec
 gemspec

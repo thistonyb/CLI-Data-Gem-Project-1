@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "good_news/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "good_news"
+  spec.name          = "good-news"
   spec.version       = GoodNews::VERSION
-  spec.authors       = ["TODO: Write your name"]
-  spec.email         = ["TODO: Write your email address"]
+  spec.authors       = "Tony Baker"
+  spec.email         = 'this.tonybaker@gmail.com'
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Good News"
+  spec.description   = "Provides good news topics and then articles launched to a browser."
+  spec.homepage      = 'http://rubygems.org/gems/good-news'
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

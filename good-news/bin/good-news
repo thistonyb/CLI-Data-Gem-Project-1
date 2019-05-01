@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/good_news'
+
+GoodNews::Scraper.get_topics
+GoodNews::Scraper.get_articles
+GoodNews::Cli.call_user

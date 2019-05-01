@@ -1,13 +1,4 @@
-require_relative "./scraper.rb"
-require_relative "./topic.rb"
-require_relative "./article.rb"
-require 'nokogiri'
-require 'open-uri'
-require 'launchy'
-require 'pry'
-
-#Command line interface class
-class Cli
+class GoodNews::Cli
 
     #Class method to begin interaction with user.
     #Gives a choice of topics or exit.
@@ -37,7 +28,7 @@ class Cli
     def self.display_topics
         user_input = nil
         counter = 1
-        Topic.all.each do |topic|
+        GoodNews::Topic.all.each do |topic|
             puts "#{counter}. #{topic.name}"
             counter += 1
         end
@@ -47,7 +38,7 @@ class Cli
             
             user_input = gets.chomp
 
-            if (1..Topic.all.length).include?(user_input.to_i)
+            if (1..GoodNews::Topic.all.length).include?(user_input.to_i)
                 self.display_articles(user_input)
             elsif user_input == "exit"
                 self.good_bye
@@ -60,7 +51,7 @@ class Cli
     #Launches article in browser.
     def self.display_articles(topic_input)
         user_input = nil
-        topic_articles = Topic.all[topic_input.to_i - 1].articles
+        topic_articles = GoodNews::Topic.all[topic_input.to_i - 1].articles
         counter = 1
         topic_articles.each do |article|
             puts "#{counter}. #{article.title}"
