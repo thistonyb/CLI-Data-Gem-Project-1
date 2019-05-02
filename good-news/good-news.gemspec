@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.license       = "MIT"
   spec.executables << 'good-news'
 
-  spec.files         = ["lib/good_news.rb", "lib/good_news/cli.rb", "lib/good_news/scraper.rb", "lib/good_news/article.rb", "lib/good_news/topic.rb", "config/environment.rb"]
+  spec.files         = ["lib/good_news.rb", "lib/good_news/version.rb", "lib/good_news/cli.rb", "lib/good_news/scraper.rb", "lib/good_news/article.rb", "lib/good_news/topic.rb", "config/environment.rb"]
 
  
   spec.add_development_dependency "bundler", "~> 2.0"
